@@ -1,0 +1,28 @@
+sudo docker images
+
+sudo docker ps -l
+
+sudo docker commit 5773ad3e5501 centos
+
+sudo docker run -it centos /bin/bash   # run centos in interactive mode
+
+sudo docker inspect <container id> | grep "IPAddress"
+
+
+sudo docker logs e6ad0ff4f373
+
+
+sudo docker stop <container id>
+
+docker rmi <image>
+
+The way to find containers that are stopped is 
+docker ps -a
+
+--------------------------------------------------------------------------------
+
+jupyter notebook
+------------------
+docker run -i -t -p 8888:8888 continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser --allow-root"
+
+sudo docker run -i -t -p 8887:8887 continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/jupyter notebook  --ip='*' --port=8887 --no-browser --allow-root"

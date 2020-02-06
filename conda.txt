@@ -1,0 +1,44 @@
+conda info 
+
+
+conda info --env
+
+
+conda list  or pip list
+
+
+conda create --name myclone --clone myenv
+
+
+--------------------------------------------------------------------
+
+
+create a env with python 3 for OpenCV and PyTorch
+-----------------------------------------------------
+
+conda create -n python3 python=3.6
+
+conda install pytorch=0.3 (or)
+
+conda install --name myenv pytorch
+
+-------------------------------------------------------------------
+
+# To activate this environment, use
+#
+#     $ conda activate cv
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+conda install -c conda-forge imageio
+
+
+
+
+
+
+
+

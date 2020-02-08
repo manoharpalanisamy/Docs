@@ -1,10 +1,13 @@
+Git Manual
+-----------
+1) https://gist.github.com/hofmannsven/6814451
+
+
+
 Download Particular folder from Github
 -----------------------------------------
 
 1) http://kinolien.github.io/gitzip/
-
-
-
 
 -------------------------------------------------
 
@@ -45,9 +48,4 @@ git checkout Demo
 
 
 git push origin +Docs
-
-
-
-
-
 

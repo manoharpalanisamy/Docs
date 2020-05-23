@@ -20,7 +20,7 @@
   									CREATE TABLE
 
 
-  							CREATE TABLE customer(
+  								CREATE TABLE customer(
 								cust_id INT NOT NULL AUTO_INCREMENT,
   								first_name VARCHAR(50) NOT NULL ,
   								last_naem VARCHAR(50) NOT NULL,
@@ -116,12 +116,17 @@
 
 
 
+		    ALTER TABLE product ADD COLUMN p_id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY(p_id);
 
-			ALTER TABLE customer ADD state VARCHAR(50) NOT NULL AFTER address2;
+			-- ALTER TABLE customer ADD state VARCHAR(50) NOT NULL AFTER address2;
 
-			ALTER TABLE customer MODIFY address2 VARCHAR(100) NOT NULL ;
+			ALTER TABLE product MODIFY COLUMN address2 VARCHAR(50) NOT NULL ;
 
-			ALTER TABLE customer DROP state ;
+			-- ALTER TABLE customer MODIFY address2 VARCHAR(100) NOT NULL ;
+
+			ALTER TABLE product DROP COLUMN state;
+
+			-- ALTER TABLE customer DROP state ;
 
 			ALTER TABLE customer CHANGE COLUMN last_naem last_name VARCHAR(20) NOT NULL AFTER first_name;  // RENAME COLUMN
 

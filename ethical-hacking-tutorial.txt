@@ -57,6 +57,10 @@ eg. public ip - 157.50.138.103
 
 eg. https://www.shellvoide.com/hacks/how-to-hack-an-android-smartphone-with-metasploit-over-wan-internet/
 
+https://resources.infosecinstitute.com/lab-hacking-an-android-device-with-msfvenom/
+
+https://null-byte.wonderhowto.com/forum/gaining-access-into-victims-whatsapp-android-0178389/
+
 1) type in terminal  > msfconsole (or) msfconsole -q
 2) search type:exploit platform:android
 3) use exploit/multi/handler
@@ -97,3 +101,46 @@ https://ipgeolocation.io  eg: IPv6 = 2409:4072:98c:6a8a:23a6:3d80:c4a7:5f87 (or)
 https://www.google.co.in/maps  eg: lat, long = 19.12540, 72.99920
 
 ###############################END#####################################
+
+ahmia search engine for Dark web
+---------------------------------
+
+https://ahmia.fi/
+
+########################################################################
+
+scrcpy (v1.14)
+------------------
+This application provides display and control of Android devices connected on USB (or over TCP/IP). It does not require any root access. It works on GNU/Linux, Windows and macOS.
+
+https://www.fosslinux.com/25170/how-to-install-and-setup-adb-tools-on-linux.htm
+https://computingforgeeks.com/install-adb-fastboot-on-ubuntu-mint/
+sudo apt update
+sudo apt-get install android-tools-adb android-tools-fastboot
+
+sudo apt update
+sudo apt install snapd
+sudo snap install scrcpy
+https://github.com/Genymobile/scrcpy
+
+Run
+---
+sudo adb start-server
+adb kill-server
+/snap/bin/scrcpy
+
+######################################################################
+
+SHODAN
+-------
+pip install shodan
+
+API key siqEaIwKKjuq6mJZpAOkC8Sp4MTN4V7L
+
+        (OR)
+        
+SHODAN EYE (prefered)
+-----------------------
+git clone https://github.com/BullsEye0/shodan-eye.git
+cd shodan-eye
+pip3 install -r requirements.txt

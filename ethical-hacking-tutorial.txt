@@ -126,8 +126,14 @@ https://github.com/Genymobile/scrcpy
 Run
 ---
 sudo adb start-server
+adb tcpip 5555
+adb connect <IP ADDR OF PHONE>:5555
+
+
 adb kill-server
 /snap/bin/scrcpy
+
+
 
 ######################################################################
 
@@ -144,3 +150,18 @@ SHODAN EYE (prefered)
 git clone https://github.com/BullsEye0/shodan-eye.git
 cd shodan-eye
 pip3 install -r requirements.txt
+
+zoomeye
+---------
+
+
+
+steganography-hide-secret-data-inside-image-audio-file-seconds
+--------------------------------------------------------------
+
+1) https://null-byte.wonderhowto.com/how-to/steganography-hide-secret-data-inside-image-audio-file-seconds-0180936/
+
+
+steghide --help
+To embed emb.txt in cvr.jpg: steghide embed -cf cvr.jpg -ef emb.txt
+To extract embedded data from stg.jpg: steghide extract -sf stg.jpg

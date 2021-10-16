@@ -1,312 +1,327 @@
-	
 
-						systemctl stop mysqld.service 
+For Centos Users
+----------------
+systemctl stop mysqld.service 
 
-						
 
-                         ADMIN ACCESS FOR CREATE AND DROP A TABLE
 
-	                         mysqladmin -u root -p create test
+For mac users
+--------------
+brew services stop mysql
+brew services start mysql
+brew services restart mysql
+brew services list
 
-	                         mysqladmin -u root -p drop test
+(or)
 
+mysql.server start
+mysql.server status
+mysql.server restart
 
-	                        create database if not exists temp;
 
-	                        	
-  -----------------------------------------------------------------------------
 
+create mysql password 
+----------------------
+mysqladmin -u root password 'secretpaSSw0rd'
+mysql -u root -p secretpaSSw0rd
 
-  									CREATE TABLE
 
 
-  								CREATE TABLE customer(
-								cust_id INT NOT NULL AUTO_INCREMENT,
-  								first_name VARCHAR(50) NOT NULL ,
-  								last_naem VARCHAR(50) NOT NULL,
-  								address1 VARCHAR(50) NOT NULL,
-  								address2 VARCHAR(50)  NULL,
-  								country VARCHAR(50) NOT NULL,
-  								PRIMARY KEY(cust_id));
 
+ADMIN ACCESS FOR CREATE AND DROP A TABLE
+-----------------------------------------
+mysqladmin -u root -p create test
+mysqladmin -u root -p drop test
 
 
 
 
+CREATE database
+------------------
+create database if not exists test;
 
-  									 show databases;
 
-  									 use test;
 
-  									 show tables;
 
-  									 show column from customer;   
+USE database
+------------
+USE test;
 
-  									 	or
 
-  									 desc customer;
+----------------------------------------------------------
 
 
-  									 show index from customer;   //show PRIMARY KEY
+CREATE TABLE
+-------------
+CREATE TABLE customer(
+cust_id INT NOT NULL AUTO_INCREMENT,
+first_name VARCHAR(50) NOT NULL ,
+last_name VARCHAR(50) NOT NULL,
+address1 VARCHAR(50) NOT NULL,
+address2 VARCHAR(50)  NULL,
+country VARCHAR(50) NOT NULL,
+PRIMARY KEY(cust_id));
 
-  									 show create tables customer; //show cretaed tables syntax
 
------------------------------------------------------------------------------------------------------------------
 
-  									 DROP TABLE
 
+SHOW table
+-----------
+show tables;
 
-  									 DROP TABLE customer;
 
------------------------------------------------------------------------------------------------------------------
 
-  									INSERT QUERY
+SHOW column FROM TABLE
+-----------------------
+show columns from customer;   
 
+(or)
 
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("manohar","jaya","vile parle","mumbai","india");
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("ram","kaunder","vile parle","mumbai","india");
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("lakshman","kaunder","vile parle","mumbai","india");
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("ravi","kaunder","vile parle","mumbai","india");
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("shekhar","kaunder","vile parle","mumbai","india");
-  									
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("jaya","kaunder","vile parle","mumbai","india");
-  									INSERT INTO customer (first_name,last_naem,address1,address2,country) VALUES("dhanush","kaunder","vile parle","mumbai","india");
-  									
+desc customer;
 
-  									INSERT INTO customer VALUES("shekhar","kaunder","vile parle","mumbai","india");
-  									
-  									INSERT INTO customer VALUES("shekhar","kaunder","vile parle","mumbai","india"),
-  																("shekhar","kaunder","vile parle","mumbai","india"),
-  																("shekhar","kaunder","vile parle","mumbai","india");
---------------------------------------------------------------------------------------------------------------
 
-								
-									SELECT QUERY
 
+show index from customer;   //show PRIMARY KEY
 
-							SELECT * FROM customer WHERE first_name="ram";
+show create table customer; //show created tables syntax
 
-							SELECT * FROM customer WHERE cust_id<=2;
 
-							SELECT * FROM customer WHERE cust_id!=2;
 
-							SELECT * FROM customer WHERE cust_id=2;
 
-------------------------------------------------------------------------------------------------------
-	
-								UPDATE QUERY
+DROP TABLE
+------------
+DROP TABLE customer;
 
-							UPDATE  customer SET first_name="Manohar" WHERE cust_id=1 
 
----------------------------------------------------------------------------------------------------------
 
-								DELETE QUERY
+INSERT QUERY
+--------------
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("manohar","palanisamy","salem","tamilnadu","india");
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("silver stalan","trichy","","tamilnadu","india");
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("ajith","kumar","salem","tamilnadu","india");
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("surya","noidea","thiruppur","tamilnadu","india");
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("avinash","balaji","coimbatore","tamilnadu","india");
 
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("KBS","krishnakumar","salem","tamilnadu","india");
+INSERT INTO customer (first_name,last_name,address1,address2,country) VALUES("jocker","mad","gotham city","gotham","US");
 
-						DELETE FROM customer WHERE cust_id=1 AND first_name="manohar";
 
-						DELETE FROM customer;  // DELETE all contents from table
+INSERT INTO customer VALUES("manohar","palanisamy","salem","tamilnadu","india");
 
+INSERT INTO customer VALUES("silver stalan","trichy","","tamilnadu","india"),
+	("avinash","balaji","coimbatore","tamilnadu","india"),
+	("KBS","krishnakumar","salem","tamilnadu","india");
 
----------------------------------------------------------------------------------------------------
 
-				
+SELECT QUERY
+-------------
+SELECT * FROM customer WHERE first_name="silver";
+SELECT * FROM customer WHERE cust_id<=2;
+SELECT * FROM customer WHERE cust_id!=2;
+SELECT * FROM customer WHERE cust_id=2;
 
-						 ALTER TABLE (ADD, DROP, MODIFY, CHANGE COLUMN, RENAME TO)
 
 
+UPDATE QUERY
+-------------
+UPDATE  customer SET first_name="Manohar" WHERE cust_id=1 
 
-		    ALTER TABLE product ADD COLUMN p_id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY(p_id);
 
-			-- ALTER TABLE customer ADD state VARCHAR(50) NOT NULL AFTER address2;
 
-			ALTER TABLE product MODIFY COLUMN address2 VARCHAR(50) NOT NULL ;
+DELETE QUERY
+-------------
+DELETE FROM customer WHERE cust_id=1 AND first_name="manohar";
+DELETE FROM customer;  // DELETE all contents from table
 
-			-- ALTER TABLE customer MODIFY address2 VARCHAR(100) NOT NULL ;
 
-			ALTER TABLE product DROP COLUMN state;
 
-			-- ALTER TABLE customer DROP state ;
+ALTER TABLE (ADD, DROP, MODIFY, CHANGE COLUMN, RENAME TO)
+---------------------------------------------------------
+ALTER TABLE product ADD COLUMN p_id INT NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY(p_id);
+-- ALTER TABLE customer ADD state VARCHAR(50) NOT NULL AFTER address2;
 
-			ALTER TABLE customer CHANGE COLUMN last_naem last_name VARCHAR(20) NOT NULL AFTER first_name;  // RENAME COLUMN
+ALTER TABLE product MODIFY COLUMN address2 VARCHAR(50) NOT NULL ;
+-- ALTER TABLE customer MODIFY address2 VARCHAR(100) NOT NULL ;
 
-			ALTER TABLE customer RENAME TO cust;
+ALTER TABLE product DROP COLUMN state;
+-- ALTER TABLE customer DROP state ;
 
---------------------------------------------------------------------------------------------------------
+ALTER TABLE customer CHANGE COLUMN last_name last_name VARCHAR(20) NOT NULL AFTER first_name;  // RENAME COLUMN
 
-									TRUNCATE TABLE
+ALTER TABLE customer RENAME TO cust;
 
-				TRUNCATE TABLE customer;
 
---------------------------------------------------------------------------------------------------------
 
-									
+TRUNCATE TABLE
+--------------
+TRUNCATE TABLE customer;
 
 
-		CREATE TABLE sales(
 
-			sales_id int NOT NULL AUTO_INCREMENT , price float(2,2) NOT NULL, territory VARCHAR(5) NOT NULL);
+CREATE TABLE sales(
 
+sales_id int NOT NULL AUTO_INCREMENT , price float(2,2) NOT NULL, territory VARCHAR(5) NOT NULL);
 
-		INSERT INTO sales VALUES(25,"south"),(10,"north"),(22,"west"),(12,"west");
-		
 
+INSERT INTO sales VALUES(25,"south"),(10,"north"),(22,"west"),(12,"west");
 
-		ALTER TABLE sales MODIFY price tinyint NOT NULL ;
 
-		ALTER TABLE sales CHANGE COLUMN price cost tinyint NOT NULL AFTER sales_id;
 
-		ALTER TABLE sales RENAME TO salesman;
+ALTER TABLE sales MODIFY price tinyint NOT NULL ;
+
+ALTER TABLE sales CHANGE COLUMN price cost tinyint NOT NULL AFTER sales_id;
+
+ALTER TABLE sales RENAME TO salesman;
 
 ----------------------------------------------------------------------------------------------------------------
 
 
 
-			CREATE TABLE product(p_id INT NOT NULL AUTO_INCREMENT,p_name VARCHAR(50) NOT NULL ,qty VARCHAR(50) NOT NULL,PRIMARY KEY(p_id));
+CREATE TABLE product(p_id INT NOT NULL AUTO_INCREMENT,p_name VARCHAR(50) NOT NULL ,qty VARCHAR(50) NOT NULL,PRIMARY KEY(p_id));
 
 
 
-			INSERT INTO product (p_name,qty) VALUES("TV","100");
-			INSERT INTO product (p_name,qty) VALUES("fridge","152");
-			INSERT INTO product (p_name,qty) VALUES("AC","200");
-  			INSERT INTO product (p_name,qty) VALUES("Washing machine","100");	
+INSERT INTO product (p_name,qty) VALUES("TV","100");
+INSERT INTO product (p_name,qty) VALUES("fridge","152");
+INSERT INTO product (p_name,qty) VALUES("AC","200");
+INSERT INTO product (p_name,qty) VALUES("Washing machine","100");	
 
 
-  			TRUNCATE TABLE product;
-
-
-
-  			----------------------------------------------------------------------------------------------
+TRUNCATE TABLE product;
 
 
 
+----------------------------------------------------------------------------------------------
 
-  			CREATE database retail;
 
-  			use retail;
 
-  			CREATE TABLE product(p_id INT,p_name STRING,qty STRING);
+
+CREATE database retail;
+
+use retail;
+
+CREATE TABLE product(p_id INT,p_name STRING,qty STRING);
 
 
 ---------------------------------------------------------------------------------------------------
 
-											JOINS
+JOINS
 
-				SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c INNER JOIN  salesman AS s
-				ON c.cust_id=s.sales_id;
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c INNER JOIN  salesman AS s
+ON c.cust_id=s.sales_id;
 
-				SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c LEFT OUTER JOIN salesman AS s
-				ON c.cust_id=s.sales_id;
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c LEFT OUTER JOIN salesman AS s
+ON c.cust_id=s.sales_id;
 
-			
-				SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c RIGHT OUTER JOIN salesman AS s
-				ON c.cust_id=s.sales_id;
+
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c RIGHT OUTER JOIN salesman AS s
+ON c.cust_id=s.sales_id;
 
 
 -----------------------------------------------------------------------------------------------------------
 
 
-									       WHERE CLAUSE
+WHERE CLAUSE
 
 
-				SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c LEFT OUTER JOIN salesman AS s
-				ON c.cust_id=s.sales_id WHERE c.first_name="manohar";
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c LEFT OUTER JOIN salesman AS s
+ON c.cust_id=s.sales_id WHERE c.first_name="manohar";
 
 ------------------------------------------------------------------------------------------------------------
 
-										     DISTINCT
+DISTINCT
 
 
-				SELECT DISTINCT s.cost, c.cust_id, c.first_name, c.address1, c.country, s.territory from customer AS c LEFT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id;
+SELECT DISTINCT s.cost, c.cust_id, c.first_name, c.address1, c.country, s.territory from customer AS c LEFT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id;
 
 -----------------------------------------------------------------------------------------------------------------------------------
 
-											ORDER BY (ASC,DESC)
+ORDER BY (ASC,DESC)
 
 
-				SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id ORDER BY c.cust_id DESC;
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id ORDER BY c.cust_id DESC;
 
-				SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id ORDER BY c.first_name ASC;
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory from customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id ORDER BY c.first_name ASC;
 
 
 ---------------------------------------------------------------------------------------------------------------------
 
 
-			
-										      GROUP BY
 
-				SELECT SUM(cost) AS territory_cost, territory , first_name  FROM salesman INNER JOIN customer ON sales_id =cust_id GROUP BY territory ORDER BY first_name ASC
+GROUP BY
 
-				SELECT SUM(cost) AS territory_cost, territory , first_name  FROM salesman INNER JOIN customer ON sales_id =cust_id   GROUP  BY ORDER BY territory ASC HAVING SUM(cost) AS territory_cost => 35;
+SELECT SUM(cost) AS territory_cost, territory , first_name  FROM salesman INNER JOIN customer ON sales_id =cust_id GROUP BY territory ORDER BY first_name ASC
+
+SELECT SUM(cost) AS territory_cost, territory , first_name  FROM salesman INNER JOIN customer ON sales_id =cust_id   GROUP  BY ORDER BY territory ASC HAVING SUM(cost) AS territory_cost => 35;
 
 
-											HAVING CLAUSE
+HAVING CLAUSE
 
-			SELECT SUM(cost) AS territory_cost, territory , first_name  FROM salesman INNER JOIN customer ON sales_id =cust_id GROUP BY territory HAVING SUM(cost)>35  ORDER BY territory_cost ASC;
+SELECT SUM(cost) AS territory_cost, territory , first_name  FROM salesman INNER JOIN customer ON sales_id =cust_id GROUP BY territory HAVING SUM(cost)>35  ORDER BY territory_cost ASC;
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
-				
-
-											    LIKE (%,_)
 
 
-			SELECT * FROM customer WHERE first_name LIKE "manohar";
-
-			SELECT * FROM customer WHERE first_name LIKE "mano%";
-
-			SELECT * FROM customer WHERE first_name LIKE "mano_ar";
-
-			SELECT * FROM customer WHERE first_name LIKE "_anohar";
+LIKE (%,_)
 
 
-			SELECT * FROM customer WHERE first_name NOT LIKE "mano%";
+SELECT * FROM customer WHERE first_name LIKE "manohar";
+
+SELECT * FROM customer WHERE first_name LIKE "mano%";
+
+SELECT * FROM customer WHERE first_name LIKE "mano_ar";
+
+SELECT * FROM customer WHERE first_name LIKE "_anohar";
+
+
+SELECT * FROM customer WHERE first_name NOT LIKE "mano%";
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
 
-												IN (eg. OR | replace OR)
+IN (eg. OR | replace OR)
 
-				SELECT * FROM customer WHERE first_name IN ("manohar","shekhar","ram","lakshman");
+SELECT * FROM customer WHERE first_name IN ("manohar","shekhar","ram","lakshman");
 
 
-											CONTRAST WITH
+CONTRAST WITH
 
-				SELECT * FROM customer WHERE first_name ="manohar" OR first_name="shekhar" OR first_name="ram" OR first_name="lakshman";
+SELECT * FROM customer WHERE first_name ="manohar" OR first_name="shekhar" OR first_name="ram" OR first_name="lakshman";
 
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
-												
-												NOT(opposite of MySQL IN condition)	
 
-			
-			    SELECT * FROM customer WHERE first_name NOT IN ("manohar");
-
-			    SELECT * FROM customer WHERE first_name NOT IN ("manohar","shekhar","ram","lakshman");
+NOT(opposite of MySQL IN condition)	
 
 
-			    SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory FROM customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id WHERE c.first_name IS  NOT NULL;
-			    
+SELECT * FROM customer WHERE first_name NOT IN ("manohar");
 
-			    SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory FROM customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id WHERE c.first_name IS NULL;
+SELECT * FROM customer WHERE first_name NOT IN ("manohar","shekhar","ram","lakshman");
 
-			    SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory FROM customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id WHERE c.cust_id NOT BETWEEN 1 AND 3;
+
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory FROM customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id WHERE c.first_name IS  NOT NULL;
+
+
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory FROM customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id WHERE c.first_name IS NULL;
+
+SELECT c.cust_id, c.first_name, c.address1, c.country, s.cost, s.territory FROM customer AS c RIGHT OUTER JOIN salesman AS s ON c.cust_id=s.sales_id WHERE c.cust_id NOT BETWEEN 1 AND 3;
 
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
 
-									         eg	. FIRST AND LAST RECORD
+eg	. FIRST AND LAST RECORD
 
 
-				SELECT * FROM customer LIMIT 1;
+SELECT * FROM customer LIMIT 1;
 
-				SELECT * FROM customer ORDER BY cust_id DESC LIMIT 2;
+SELECT * FROM customer ORDER BY cust_id DESC LIMIT 2;
 
-				SELECT * FROM salesman LIMIT 3,2;      //  (3,2)   AFTER 3 row display only 2 rows
+SELECT * FROM salesman LIMIT 3,2;      //  (3,2)   AFTER 3 row display only 2 rows
 
 
 
@@ -314,52 +329,25 @@
 
 
 
-												DATE 
+DATE 
 
-			SELECT CURRENT_DATE(); 
+SELECT CURRENT_DATE(); 
 
-			SELECT NOW();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT NOW();
 
 
 
 EXCERCISE
 --------------------------
-
-
-
-
-
-
 CREATE TABLE student(
-	s_id int NOT NULL AUTO_INCREMENT,
-	first_name VARCHAR(50) NOT NULL UNIQUE,
-	last_name VARCHAR(50) NOT NULL,
-	address1 VARCHAR(50) NOT NULL,
-	address2 VARCHAR(50) NOT NULL,
-	country VARCHAR(50) NOT NULL,
-	phone VARCHAR(12) NOT NULL UNIQUE,
-	PRIMARY KEY(s_id));
-
-
+s_id int NOT NULL AUTO_INCREMENT,
+first_name VARCHAR(50) NOT NULL UNIQUE,
+last_name VARCHAR(50) NOT NULL,
+address1 VARCHAR(50) NOT NULL,
+address2 VARCHAR(50) NOT NULL,
+country VARCHAR(50) NOT NULL,
+phone VARCHAR(12) NOT NULL UNIQUE,
+PRIMARY KEY(s_id));
 
 
 
@@ -430,18 +418,18 @@ ALTER TABLE stu RENAME TO student;
 
 
 TRUNCATE TABLE student; // TRUNCATE is DDL  command is cannot be roll back but in delete is a DML command is copied on 
-						on rollback tablespace when you are even delete the RECORD you can get it later while using DELETE
+on rollback tablespace when you are even delete the RECORD you can get it later while using DELETE
 
-						//TRUNCATE is faster than DELETE because it is not stored on rollback tablespaces
+//TRUNCATE is faster than DELETE because it is not stored on rollback tablespaces
 
 
 
 CREATE TABLE progress(
-	p_id int NOT NULL AUTO_INCREMENT,
-	subject1 VARCHAR(15) NOT NULL,
-	subject2 VARCHAR(15) NOT NULL,
-	marks tinyint NOT NULL,
-	PRIMARY KEY(p_id));
+p_id int NOT NULL AUTO_INCREMENT,
+subject1 VARCHAR(15) NOT NULL,
+subject2 VARCHAR(15) NOT NULL,
+marks tinyint NOT NULL,
+PRIMARY KEY(p_id));
 
 
 SELECT * FROM progress;
@@ -510,11 +498,11 @@ SELECT CURRENT_DATE();
 
 CREATE TABLE employee
 (
-	e_id tinyint NOT NULL AUTO_INCREMENT,
-	name VARCHAR(50) NOT NULL,
-	work_date VARCHAR(50) NOT NULL,
-	daily_typed_pages VARCHAR(50) NOT NULL,
-	PRIMARY KEY(e_id)
+e_id tinyint NOT NULL AUTO_INCREMENT,
+name VARCHAR(50) NOT NULL,
+work_date VARCHAR(50) NOT NULL,
+daily_typed_pages VARCHAR(50) NOT NULL,
+PRIMARY KEY(e_id)
 );
 
 
@@ -528,21 +516,7 @@ SELECT COUNT(*),name from employee GROUP BY name;
 
 
 
-
-
-
-
-
 mysqladmin -uroot -p SELECT * FROM employee INTO OUTFILE '/home/manohar/employee.txt';
-
-
-
-
-
-
-
-
-
 
 
 
@@ -563,13 +537,13 @@ mysql -u root -p fieldsense < fieldsense_fieldsensestats_db.sql
 
 
 
-				MULTI JOIN 
-			--------------------------
+MULTI JOIN 
+--------------------------
 
 
 
 
- SELECT c.customer_name, a.appointment_time, a.appointment_end_time,p.purpose  FROM customers as c  INNER JOIN appointments as a  ON a.customer_id_fk=c.id INNER JOIN fieldsense.users as u ON a.user_id_fk= u.id  INNER JOIN activity_purpose as p ON a.purpose_id_fk= p.id  WHERE a.appointment_time="2018-03-14 12:19:00" AND a.appointment_end_time="2018-03-14 01:19:00" AND  c.record_state !=3 \G
+SELECT c.customer_name, a.appointment_time, a.appointment_end_time,p.purpose  FROM customers as c  INNER JOIN appointments as a  ON a.customer_id_fk=c.id INNER JOIN fieldsense.users as u ON a.user_id_fk= u.id  INNER JOIN activity_purpose as p ON a.purpose_id_fk= p.id  WHERE a.appointment_time="2018-03-14 12:19:00" AND a.appointment_end_time="2018-03-14 01:19:00" AND  c.record_state !=3 \G
 
 
 

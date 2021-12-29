@@ -1,2 +1,19 @@
 1) https://cs.baylor.edu/~donahoo/tools/gdb/tutorial.html
 2) https://condor.depaul.edu/glancast/373class/docs/gdb.html
+
+
+Mac
+----
+Build(compile) and Execute(run) C and C++ 
+
+1) clang test.c -o test && ./test
+2) clang++ -std=c++11 hello.cpp -o hello && ./hello
+
+
+Ubuntu
+-------
+
+1) gcc test.c -o test && ./test
+2) g++ -std=c++11 hello.cpp -o hello && ./hello 
+
+clang++ -std=c++11 -g hello.cpp -o hello

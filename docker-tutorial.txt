@@ -26,8 +26,11 @@ sudo docker run -it centos /bin/bash   # run centos in interactive mode
 
 sudo docker inspect <container id> | grep "IPAddress"
 
-
 sudo docker logs e6ad0ff4f373
+
+docker cp hello.cpp  ddd-GUI:/home/Cpp/ // ddd-GUI container tag or container ID
+
+docker cp 74789744g489:/copytohost.html copytohost.html // Copy files from docker container to host
 
 GUI APPLICATION
 ----------------

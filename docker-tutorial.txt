@@ -1,8 +1,26 @@
-sudo docker images
+docker --version
 
-sudo docker ps -l
+docker pull ubuntu:18.04 // pull ubuntu 18.04 image from docker hub.
 
-sudo docker commit 5773ad3e5501 centos
+sudo docker images // show all docker images
+
+docker start –attach <container name> //To attach particular container. it does not make multiple container
+
+docker stop <container name> or <container ID>
+
+docker rm <container name> or <container ID>
+docker rmi <image name> or <image ID>
+
+
+sudo docker ps -a // show all INACTIVE container process
+
+docker login
+
+sudo docker commit 5773ad3e5501 <New Image Name>
+
+docker tag 2f2beb68e638 dockerhub4manohar/ddd-nemiver-gui // Tag the name for given container ID.
+
+docker push dockerhub4manohar/ddd-nemiver-gui
 
 sudo docker run -it centos /bin/bash   # run centos in interactive mode
 
@@ -11,14 +29,33 @@ sudo docker inspect <container id> | grep "IPAddress"
 
 sudo docker logs e6ad0ff4f373
 
+GUI APPLICATION
+----------------
 
-sudo docker stop <container id>
+1) Run the given command in the terminal 
 
-docker rmi <image>
+i) IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+ii) echo $IP
+iii) xhost + $IP
 
-The way to find containers that are stopped is 
-docker ps -a
+(or)
 
+ifconfig en0
+
+2) start Xquartz Application on your computer 
+
+References:
+-----------
+
+i) https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/
+
+
+Example:
+---------
+
+docker run -it -e DISPLAY=172.20.10.9:0 --name firefox_container ubuntu:firefox   // port should be 0
+
+ifconfig en0 // inet address : 172.20.10.9 
 --------------------------------------------------------------------------------
 
 jupyter notebook
